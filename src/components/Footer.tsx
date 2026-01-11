@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Sparkles, Facebook, Instagram, Phone, Mail, MapPin } from "lucide-react";
+import Image from "next/image";
+import { Facebook, Instagram, Phone, Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -15,11 +16,12 @@ export default function Footer() {
   ];
 
   const services = [
-    "Regular Cleaning",
+    "House Cleaning",
     "Deep Cleaning",
+    "Floor Washing",
     "Babysitting",
-    "Pet Sitting",
     "House Sitting",
+    "Blooming Flowers",
   ];
 
   return (
@@ -29,13 +31,19 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-sky-500 to-teal-400 rounded-full flex items-center justify-center">
-                <Sparkles className="w-6 h-6 text-white" />
+            <Link href="/" className="flex items-center gap-3 mb-6">
+              <div className="relative w-14 h-14 rounded-lg overflow-hidden">
+                <Image
+                  src="/logo.jpg"
+                  alt="Maid In Suva Logo"
+                  fill
+                  className="object-cover"
+                  sizes="56px"
+                />
               </div>
               <div>
                 <span className="text-xl font-bold">Maid In Suva</span>
-                <p className="text-xs text-sky-400">100% Fijian Owned</p>
+                <p className="text-xs text-amber-400">100% Fijian Owned</p>
               </div>
             </Link>
             <p className="text-gray-400 mb-6">
@@ -45,14 +53,14 @@ export default function Footer() {
             <div className="flex gap-4">
               <a
                 href="#"
-                className="w-10 h-10 bg-gray-800 hover:bg-sky-600 rounded-full flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-gray-800 hover:bg-amber-500 rounded-full flex items-center justify-center transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-gray-800 hover:bg-pink-600 rounded-full flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-gray-800 hover:bg-amber-500 rounded-full flex items-center justify-center transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
@@ -68,7 +76,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-sky-400 transition-colors"
+                    className="text-gray-400 hover:text-amber-400 transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -85,7 +93,7 @@ export default function Footer() {
                 <li key={service}>
                   <Link
                     href="#services"
-                    className="text-gray-400 hover:text-sky-400 transition-colors"
+                    className="text-gray-400 hover:text-amber-400 transition-colors"
                   >
                     {service}
                   </Link>
@@ -99,15 +107,15 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-6">Contact Us</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-sky-400 flex-shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-400">Suva, Fiji</span>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-sky-400 flex-shrink-0 mt-0.5" />
+                <Phone className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-400">Contact for details</span>
               </li>
               <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-sky-400 flex-shrink-0 mt-0.5" />
+                <Mail className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-400">info@maidinsuva.com</span>
               </li>
             </ul>

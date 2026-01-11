@@ -1,61 +1,79 @@
 "use client";
 
-import { Home, Sparkles, Baby, Dog, Key, Shield, ArrowRight } from "lucide-react";
+import { Home, Sparkles, Baby, Key, Droplets, Flower2, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function Services() {
   const services = [
     {
       icon: Home,
-      title: "Regular Cleaning",
-      description: "Comprehensive routine cleaning to keep your home spotless and fresh. Weekly, bi-weekly, or monthly options available.",
+      title: "House Cleaning",
+      price: "$20",
+      unit: "per hour",
+      minimum: "Minimum 3 hours per day",
+      description: "Comprehensive routine cleaning to keep your home spotless and fresh. Our experienced coordinators deliver 5-star resort quality cleaning.",
       features: ["Dusting & wiping", "Vacuuming & mopping", "Kitchen cleaning", "Bathroom sanitization"],
       color: "sky",
     },
     {
       icon: Sparkles,
       title: "Deep Cleaning",
-      description: "Thorough top-to-bottom cleaning for a complete refresh of your space. Perfect for move-ins or seasonal cleaning.",
-      features: ["Inside appliances", "Window cleaning", "Detailed scrubbing", "Behind furniture"],
+      price: "$25",
+      unit: "per hour",
+      minimum: "Minimum 3 hours per day",
+      description: "Thorough top-to-bottom cleaning for a complete refresh of your space. Perfect for move-ins, move-outs, or seasonal deep cleans.",
+      features: ["Inside appliances", "Detailed scrubbing", "Hard-to-reach areas", "Intensive sanitization"],
       color: "teal",
+    },
+    {
+      icon: Droplets,
+      title: "Floor Washing",
+      price: "$20",
+      unit: "per hour",
+      minimum: "Minimum 3 hours per day",
+      description: "Professional floor care for all floor types. We'll have your floors gleaming like new with our specialized cleaning techniques.",
+      features: ["Tile & grout cleaning", "Hardwood care", "Vinyl & laminate", "Polishing available"],
+      color: "indigo",
     },
     {
       icon: Baby,
       title: "Babysitting",
+      price: "$20",
+      unit: "per hour",
+      minimum: "Minimum 2 hours per day",
       description: "Trusted childcare from our experienced and First Aid trained staff. Safe, reliable, and nurturing care for your little ones.",
       features: ["First Aid certified", "Experienced carers", "Flexible hours", "Engaging activities"],
       color: "pink",
     },
     {
-      icon: Dog,
-      title: "Pet Sitting",
-      description: "Loving care for your furry family members while you're away. We treat your pets like our own.",
-      features: ["Feeding & walks", "Medication admin", "Companionship", "Daily updates"],
+      icon: Key,
+      title: "House Sitting",
+      price: "$50",
+      unit: "per day",
+      minimum: "Daily rate",
+      description: "Keep your home safe and maintained while you travel. Peace of mind knowing your property is in trusted, professional hands.",
+      features: ["Security presence", "Mail collection", "Plant watering", "Property checks"],
       color: "amber",
     },
     {
-      icon: Key,
-      title: "House Sitting",
-      description: "Keep your home safe and maintained while you travel. Peace of mind knowing your property is in good hands.",
-      features: ["Security presence", "Mail collection", "Plant watering", "Property checks"],
-      color: "indigo",
-    },
-    {
-      icon: Shield,
-      title: "COVID-Safe Cleaning",
-      description: "Enhanced sanitization protocols to keep you and your family protected. Hospital-grade disinfection standards.",
-      features: ["EPA-approved products", "High-touch surfaces", "PPE protocols", "Air purification"],
-      color: "green",
+      icon: Flower2,
+      title: "Blooming Flowers",
+      price: "Custom",
+      unit: "pricing",
+      minimum: "Delivery available",
+      description: "Your go-to florist for stunning arrangements that brighten any occasion. Fresh, beautiful blooms delivered right to your doorstep.",
+      features: ["Custom arrangements", "Fresh flowers", "All occasions", "Doorstep delivery"],
+      color: "rose",
     },
   ];
 
-  const colorClasses: Record<string, { bg: string; icon: string; hover: string }> = {
-    sky: { bg: "bg-sky-100", icon: "text-sky-600", hover: "hover:border-sky-300" },
-    teal: { bg: "bg-teal-100", icon: "text-teal-600", hover: "hover:border-teal-300" },
-    pink: { bg: "bg-pink-100", icon: "text-pink-600", hover: "hover:border-pink-300" },
-    amber: { bg: "bg-amber-100", icon: "text-amber-600", hover: "hover:border-amber-300" },
-    indigo: { bg: "bg-indigo-100", icon: "text-indigo-600", hover: "hover:border-indigo-300" },
-    green: { bg: "bg-green-100", icon: "text-green-600", hover: "hover:border-green-300" },
+  const colorClasses: Record<string, { bg: string; icon: string; hover: string; price: string }> = {
+    sky: { bg: "bg-sky-100", icon: "text-sky-600", hover: "hover:border-sky-300", price: "text-sky-600" },
+    teal: { bg: "bg-teal-100", icon: "text-teal-600", hover: "hover:border-teal-300", price: "text-teal-600" },
+    pink: { bg: "bg-pink-100", icon: "text-pink-600", hover: "hover:border-pink-300", price: "text-pink-600" },
+    amber: { bg: "bg-amber-100", icon: "text-amber-600", hover: "hover:border-amber-300", price: "text-amber-600" },
+    indigo: { bg: "bg-indigo-100", icon: "text-indigo-600", hover: "hover:border-indigo-300", price: "text-indigo-600" },
+    rose: { bg: "bg-rose-100", icon: "text-rose-600", hover: "hover:border-rose-300", price: "text-rose-600" },
   };
 
   return (
@@ -64,14 +82,13 @@ export default function Services() {
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 bg-sky-100 text-sky-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
-            What We Offer
+            What We Provide
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Our Professional Services
+            Our Services & Pricing
           </h2>
           <p className="text-lg text-gray-600">
-            From regular housekeeping to specialized care services, we&apos;ve got you covered.
-            All delivered with 5-star resort quality standards.
+            Transparent pricing with no hidden fees. All services delivered with 5-star resort quality standards.
           </p>
         </div>
 
@@ -84,15 +101,26 @@ export default function Services() {
                 key={index}
                 className={`bg-white rounded-2xl p-8 border border-gray-100 ${colors.hover} transition-all hover:shadow-xl group`}
               >
-                {/* Icon */}
-                <div className={`w-16 h-16 ${colors.bg} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                  <service.icon className={`w-8 h-8 ${colors.icon}`} />
+                {/* Icon & Price Header */}
+                <div className="flex justify-between items-start mb-6">
+                  <div className={`w-16 h-16 ${colors.bg} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                    <service.icon className={`w-8 h-8 ${colors.icon}`} />
+                  </div>
+                  <div className="text-right">
+                    <div className={`text-2xl font-bold ${colors.price}`}>
+                      {service.price}
+                    </div>
+                    <div className="text-sm text-gray-500">{service.unit}</div>
+                  </div>
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
                   {service.title}
                 </h3>
+                <p className="text-sm text-sky-600 font-medium mb-3">
+                  {service.minimum}
+                </p>
                 <p className="text-gray-600 mb-6">
                   {service.description}
                 </p>
@@ -112,7 +140,7 @@ export default function Services() {
                   href="#contact"
                   className={`inline-flex items-center gap-2 ${colors.icon} font-medium group-hover:gap-3 transition-all`}
                 >
-                  Book this service
+                  Get in Touch
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

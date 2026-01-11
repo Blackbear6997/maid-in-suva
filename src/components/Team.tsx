@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Award, Star } from "lucide-react";
 
 export default function Team() {
@@ -10,6 +11,15 @@ export default function Team() {
       experience: "26+ years",
       description: "One of our proud veteran team members. Adi Mitimiti has had extensive experience in the tourism industry, spanning 26 years, managing various high-end boutique resorts in Fiji. She brings vast knowledge of the hospitality industry and overlooks staff training and placements.",
       specialty: "Staff Training & Hospitality Management",
+      image: "/adi-mitimiti.avif",
+    },
+    {
+      name: "Ms Safaira",
+      role: "Senior Team Member",
+      experience: "Expert",
+      description: "A valuable team member bringing extensive experience and skills to the forefront in helping our business grow and evolve. Her dedication and professionalism set the standard for our team.",
+      specialty: "Professional Cleaning Services",
+      image: "/ms-safaira.avif",
     },
     {
       name: "Aviame",
@@ -17,20 +27,31 @@ export default function Team() {
       experience: "17+ years",
       description: "With over 17 years of experience working in 5-star resorts, Aviame joins us from the Sheraton Fiji. Professional to a tee, a great carer, and never without a smile. Aviame is a true asset to the growing Maid In Suva team.",
       specialty: "5-Star Housekeeping Standards",
+      image: "/ms-aviame.avif",
     },
     {
-      name: "Ledge",
+      name: "Mr Ledge",
       role: "House Coordinator",
       experience: "Specialist",
       description: "A versatile worker specializing in Bar and Dining to add to his House Coordinating skills. Ledge is truly a joy to be around and makes it a pleasure to come to work every single day.",
       specialty: "Bar, Dining & House Coordination",
+      image: "/mr-ledge.avif",
     },
     {
-      name: "Nanise",
+      name: "Ms Nanise",
       role: "Team Member",
       experience: "Dedicated",
       description: "Experienced, energetic, trustworthy, and fun. These are just a few of the ways coworkers describe this valuable member of our team. Nanise is truly a joy to be around and makes it a pleasure to work together.",
       specialty: "Reliable & Efficient Service",
+      image: "/ms-nanise.avif",
+    },
+    {
+      name: "Ms Lotise",
+      role: "Team Member",
+      experience: "Dedicated",
+      description: "A committed and hardworking team member who consistently delivers excellent results. Her attention to detail and positive attitude make her an invaluable part of our cleaning team.",
+      specialty: "Detailed Cleaning Services",
+      image: "/ms-lotise.avif",
     },
   ];
 
@@ -52,45 +73,46 @@ export default function Team() {
         </div>
 
         {/* Team grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member, index) => (
             <div
               key={index}
-              className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all group"
+              className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border border-gray-100 hover:shadow-xl transition-all group"
             >
-              <div className="flex gap-6">
-                {/* Avatar */}
-                <div className="flex-shrink-0">
-                  <div className="w-20 h-20 bg-gradient-to-br from-sky-400 to-teal-400 rounded-full flex items-center justify-center text-white text-2xl font-bold">
-                    {member.name.split(" ").map(n => n[0]).slice(0, 2).join("")}
+              {/* Photo */}
+              <div className="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-gradient-to-br from-sky-400 to-teal-400">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  className="object-cover"
+                  sizes="128px"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="text-center">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <div className="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                    <Award className="w-3 h-3" />
+                    {member.experience}
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="flex-1">
-                  <div className="flex items-start justify-between mb-2">
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900">
-                        {member.name}
-                      </h3>
-                      <p className="text-sky-600 font-medium">{member.role}</p>
-                    </div>
-                    <div className="flex items-center gap-1 bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-sm font-medium">
-                      <Award className="w-4 h-4" />
-                      {member.experience}
-                    </div>
-                  </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-1">
+                  {member.name}
+                </h3>
+                <p className="text-sky-600 font-medium text-sm mb-3">{member.role}</p>
 
-                  <p className="text-gray-600 mb-4 leading-relaxed">
-                    {member.description}
-                  </p>
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                  {member.description}
+                </p>
 
-                  <div className="flex items-center gap-2 text-sm">
-                    <Star className="w-4 h-4 text-teal-500" />
-                    <span className="text-gray-700 font-medium">
-                      Specialty: {member.specialty}
-                    </span>
-                  </div>
+                <div className="flex items-center justify-center gap-2 text-xs">
+                  <Star className="w-3 h-3 text-teal-500" />
+                  <span className="text-gray-700 font-medium">
+                    {member.specialty}
+                  </span>
                 </div>
               </div>
             </div>
