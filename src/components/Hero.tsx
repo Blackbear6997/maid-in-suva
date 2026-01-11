@@ -19,7 +19,7 @@ export default function Hero() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Content */}
-          <div className="text-center lg:text-left order-2 lg:order-1">
+          <div className="text-center lg:text-left">
             <div className="inline-flex items-center gap-2 bg-sky-100 text-sky-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
               <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
               Professional Cleaning Services in Suva
@@ -75,69 +75,41 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Image/Visual */}
-          <div className="relative order-1 lg:order-2 mb-4 lg:mb-0">
-            {/* Mobile: Simple centered card */}
-            <div className="lg:hidden">
-              <div className="relative w-full max-w-xs mx-auto">
-                <div className="bg-white rounded-2xl shadow-xl p-6">
-                  <div className="w-24 h-24 mx-auto bg-gradient-to-br from-sky-500 to-teal-400 rounded-full flex items-center justify-center mb-4">
-                    <Sparkles className="w-12 h-12 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-1 text-center">Maid In Suva</h3>
-                  <p className="text-gray-600 text-sm text-center mb-4">Excellence in Every Detail</p>
-
-                  {/* Mobile badges inline */}
-                  <div className="flex justify-center gap-3">
-                    <div className="flex items-center gap-2 bg-green-50 rounded-full px-3 py-1.5">
-                      <span className="text-base">🌿</span>
-                      <span className="text-xs font-medium text-gray-700">Eco-Friendly</span>
+          {/* Image/Visual - Desktop only */}
+          <div className="relative hidden lg:block">
+            <div className="relative w-full aspect-square max-w-lg mx-auto">
+              {/* Main image container */}
+              <div className="absolute inset-0 bg-gradient-to-br from-sky-400 to-teal-400 rounded-3xl transform rotate-3 opacity-20" />
+              <div className="absolute inset-0 bg-white rounded-3xl shadow-2xl overflow-hidden">
+                <div className="w-full h-full bg-gradient-to-br from-sky-100 to-teal-100 flex items-center justify-center">
+                  <div className="text-center p-8">
+                    <div className="w-32 h-32 mx-auto bg-gradient-to-br from-sky-500 to-teal-400 rounded-full flex items-center justify-center mb-6">
+                      <Sparkles className="w-16 h-16 text-white" />
                     </div>
-                    <div className="flex items-center gap-2 bg-sky-50 rounded-full px-3 py-1.5">
-                      <span className="text-base">🏨</span>
-                      <span className="text-xs font-medium text-gray-700">5-Star</span>
-                    </div>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-2">Maid In Suva</h3>
+                    <p className="text-gray-600">Excellence in Every Detail</p>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Desktop: Full visual with floating cards */}
-            <div className="hidden lg:block">
-              <div className="relative w-full aspect-square max-w-lg mx-auto">
-                {/* Main image container */}
-                <div className="absolute inset-0 bg-gradient-to-br from-sky-400 to-teal-400 rounded-3xl transform rotate-3 opacity-20" />
-                <div className="absolute inset-0 bg-white rounded-3xl shadow-2xl overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-sky-100 to-teal-100 flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <div className="w-32 h-32 mx-auto bg-gradient-to-br from-sky-500 to-teal-400 rounded-full flex items-center justify-center mb-6">
-                        <Sparkles className="w-16 h-16 text-white" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-gray-800 mb-2">Maid In Suva</h3>
-                      <p className="text-gray-600">Excellence in Every Detail</p>
-                    </div>
-                  </div>
+              {/* Floating cards - desktop only */}
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                  <span className="text-2xl">🌿</span>
                 </div>
-
-                {/* Floating cards - desktop only */}
-                <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                    <span className="text-2xl">🌿</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-800">Eco-Friendly</p>
-                    <p className="text-sm text-gray-500">Green products</p>
-                  </div>
+                <div>
+                  <p className="font-semibold text-gray-800">Eco-Friendly</p>
+                  <p className="text-sm text-gray-500">Green products</p>
                 </div>
+              </div>
 
-                <div className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3">
-                  <div className="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center">
-                    <span className="text-2xl">🏨</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-800">Resort Quality</p>
-                    <p className="text-sm text-gray-500">5-star experience</p>
-                  </div>
+              <div className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3">
+                <div className="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center">
+                  <span className="text-2xl">🏨</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-800">Resort Quality</p>
+                  <p className="text-sm text-gray-500">5-star experience</p>
                 </div>
               </div>
             </div>
