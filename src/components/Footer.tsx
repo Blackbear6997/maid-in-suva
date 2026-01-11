@@ -134,7 +134,7 @@ export default function Footer() {
             <p className="text-gray-500 text-sm">
               Website by{" "}
               <a
-                href="https://limitlessmarketing.fj"
+                href="https://www.limitlessfiji.org"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-amber-400 hover:text-amber-300 transition-colors"
