@@ -7,7 +7,7 @@ export default function Team() {
   const teamMembers = [
     {
       name: "Adi Mitimiti Dreunimisimisi",
-      role: "Operations Manager",
+      role: "Managing Director",
       experience: "26+ years",
       description: "Extensive experience in the tourism industry, managing high-end boutique resorts in Fiji. Overlooks staff training and placements.",
       specialty: "Staff Training & Management",
