@@ -132,7 +132,15 @@ export default function Footer() {
               &copy; {currentYear} Maid In Suva. All rights reserved. 100% Fijian Owned.
             </p>
             <p className="text-gray-500 text-sm">
-              Serving Suva with pride since the beginning.
+              Website by{" "}
+              <a
+                href="https://limitlessmarketing.fj"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-amber-400 hover:text-amber-300 transition-colors"
+              >
+                Limitless Marketing Pte Limited
+              </a>
             </p>
           </div>
         </div>
