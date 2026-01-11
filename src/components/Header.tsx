@@ -54,11 +54,12 @@ export default function Header() {
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="tel:+679"
+              href="tel:+6799926768"
               className="flex items-center gap-2 text-gray-600 hover:text-amber-600 transition-colors"
             >
               <Phone className="w-4 h-4" />
-              <span>Call Us</span>
+              <span className="hidden lg:inline">+679 992 6768</span>
+              <span className="lg:hidden">Call</span>
             </a>
             <Link
               href="#contact"
