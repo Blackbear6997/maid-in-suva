@@ -1,7 +1,7 @@
 "use client";
 
 import { Home, Sparkles, Baby, Key, Droplets, Flower2, ArrowRight } from "lucide-react";
-import Link from "next/link";
+import ScrollLink from "./ScrollLink";
 
 export default function Services() {
   const services = [
@@ -136,13 +136,13 @@ export default function Services() {
                 </ul>
 
                 {/* CTA */}
-                <Link
+                <ScrollLink
                   href="#contact"
                   className={`inline-flex items-center gap-2 ${colors.icon} font-medium text-sm sm:text-base group-hover:gap-3 transition-all`}
                 >
                   Get in Touch
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </ScrollLink>
               </div>
             );
           })}
@@ -157,13 +157,13 @@ export default function Services() {
             Give yourself a break today and let us handle the cleaning.
             Contact us for a free quote!
           </p>
-          <Link
+          <ScrollLink
             href="#contact"
             className="inline-flex items-center gap-2 bg-white text-amber-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-base hover:bg-amber-50 transition-colors"
           >
             Get Your Free Quote
             <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-          </Link>
+          </ScrollLink>
         </div>
       </div>
     </section>

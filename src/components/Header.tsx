@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, Phone } from "lucide-react";
+import ScrollLink from "./ScrollLink";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,13 +42,13 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              <Link
+              <ScrollLink
                 key={item.name}
                 href={item.href}
                 className="text-gray-600 hover:text-amber-600 transition-colors font-medium"
               >
                 {item.name}
-              </Link>
+              </ScrollLink>
             ))}
           </nav>
 
@@ -61,12 +62,12 @@ export default function Header() {
               <span className="hidden lg:inline">+679 992 6768</span>
               <span className="lg:hidden">Call</span>
             </a>
-            <Link
+            <ScrollLink
               href="#contact"
               className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2.5 rounded-full font-medium transition-colors"
             >
               Book Now
-            </Link>
+            </ScrollLink>
           </div>
 
           {/* Mobile Menu Button */}
@@ -88,22 +89,22 @@ export default function Header() {
           <div className="md:hidden py-4 border-t">
             <nav className="flex flex-col gap-4">
               {navItems.map((item) => (
-                <Link
+                <ScrollLink
                   key={item.name}
                   href={item.href}
                   className="text-gray-600 hover:text-amber-600 transition-colors font-medium px-4 py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
-                </Link>
+                </ScrollLink>
               ))}
-              <Link
+              <ScrollLink
                 href="#contact"
                 className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2.5 rounded-full font-medium transition-colors text-center mx-4"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Book Now
-              </Link>
+              </ScrollLink>
             </nav>
           </div>
         )}

@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { Sparkles, Shield, Clock, Award } from "lucide-react";
+import ScrollLink from "./ScrollLink";
 
 export default function Hero() {
   return (
@@ -38,18 +38,18 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-8 sm:mb-12">
-              <Link
+              <ScrollLink
                 href="#contact"
-                className="bg-sky-500 hover:bg-sky-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all hover:shadow-lg hover:shadow-sky-500/25"
+                className="bg-sky-500 hover:bg-sky-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all hover:shadow-lg hover:shadow-sky-500/25 text-center"
               >
                 Get a Free Quote
-              </Link>
-              <Link
+              </ScrollLink>
+              <ScrollLink
                 href="#services"
-                className="border-2 border-gray-200 hover:border-sky-500 text-gray-700 hover:text-sky-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all"
+                className="border-2 border-gray-200 hover:border-sky-500 text-gray-700 hover:text-sky-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all text-center"
               >
                 Our Services
-              </Link>
+              </ScrollLink>
             </div>
 
             {/* Trust badges */}

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Facebook, Instagram, Phone, Mail, MapPin } from "lucide-react";
+import ScrollLink from "./ScrollLink";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -74,12 +75,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link
+                  <ScrollLink
                     href={link.href}
                     className="text-gray-400 hover:text-amber-400 transition-colors"
                   >
                     {link.name}
-                  </Link>
+                  </ScrollLink>
                 </li>
               ))}
             </ul>
@@ -91,12 +92,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service}>
-                  <Link
+                  <ScrollLink
                     href="#services"
                     className="text-gray-400 hover:text-amber-400 transition-colors"
                   >
                     {service}
-                  </Link>
+                  </ScrollLink>
                 </li>
               ))}
             </ul>
