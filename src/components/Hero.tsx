@@ -38,7 +38,7 @@ export default function Hero() {
       <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-earth-deep/50 to-transparent" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+      <div className="relative z-10 w-full px-6 sm:px-12 lg:px-20 xl:px-32 pt-32 pb-20">
         <div className="max-w-3xl text-left">
           {/* Eyebrow */}
           <motion.div
