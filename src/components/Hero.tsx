@@ -58,7 +58,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-semibold text-white leading-[0.95] mb-8"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-semibold text-white leading-[0.95] mb-6 sm:mb-8"
           >
             Five-Star
             <br />
@@ -72,7 +72,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-xl sm:text-2xl text-white/70 max-w-2xl mb-12 leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl text-white/70 max-w-2xl mb-8 sm:mb-12 leading-relaxed"
           >
             Fiji&apos;s premier housekeeping service, staffed exclusively by
             professionals from the nation&apos;s most prestigious 5-star resorts.
@@ -83,17 +83,17 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-col sm:flex-row justify-start gap-4 mb-16"
+            className="flex flex-col sm:flex-row justify-start gap-3 sm:gap-4 mb-10 sm:mb-16"
           >
             <ScrollLink
               href="#contact"
-              className="inline-flex items-center justify-center bg-gold hover:bg-gold/90 text-earth-deep px-10 py-5 text-lg font-semibold transition-all hover:shadow-2xl hover:shadow-gold/20"
+              className="inline-flex items-center justify-center bg-gold hover:bg-gold/90 text-earth-deep px-6 sm:px-10 py-4 sm:py-5 text-base sm:text-lg font-semibold transition-all hover:shadow-2xl hover:shadow-gold/20"
             >
               Request a Quote
             </ScrollLink>
             <ScrollLink
               href="#services"
-              className="inline-flex items-center justify-center border border-white/30 hover:border-white/60 text-white px-10 py-5 text-lg font-medium transition-all hover:bg-white/5"
+              className="inline-flex items-center justify-center border border-white/30 hover:border-white/60 text-white px-6 sm:px-10 py-4 sm:py-5 text-base sm:text-lg font-medium transition-all hover:bg-white/5"
             >
               View Services
             </ScrollLink>
@@ -104,7 +104,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-wrap items-center justify-start gap-8 text-white/50"
+            className="flex flex-wrap items-center justify-start gap-4 sm:gap-8 text-white/50"
           >
             <div className="flex items-center gap-2">
               <div className="flex">
@@ -112,12 +112,12 @@ export default function Hero() {
                   <Star key={i} className="w-4 h-4 text-gold fill-gold" />
                 ))}
               </div>
-              <span className="text-sm">Resort Quality</span>
+              <span className="text-xs sm:text-sm">Resort Quality</span>
             </div>
-            <div className="h-4 w-px bg-white/20" />
-            <span className="text-sm">26+ Years Experience</span>
-            <div className="h-4 w-px bg-white/20" />
-            <span className="text-sm">100% Fijian Owned</span>
+            <div className="hidden sm:block h-4 w-px bg-white/20" />
+            <span className="text-xs sm:text-sm">26+ Years Experience</span>
+            <div className="hidden sm:block h-4 w-px bg-white/20" />
+            <span className="text-xs sm:text-sm">100% Fijian Owned</span>
           </motion.div>
         </div>
       </div>
@@ -137,11 +137,11 @@ export default function Hero() {
               { value: "100%", label: "Satisfaction Rate" },
               { value: "Eco", label: "Friendly Products" },
             ].map((stat, index) => (
-              <div key={index} className="py-8 px-6 text-center">
-                <div className="text-2xl sm:text-3xl font-serif font-bold text-gold mb-1">
+              <div key={index} className="py-5 sm:py-8 px-3 sm:px-6 text-center">
+                <div className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-gold mb-1">
                   {stat.value}
                 </div>
-                <div className="text-xs sm:text-sm text-white/50 uppercase tracking-wider">
+                <div className="text-[10px] sm:text-xs md:text-sm text-white/50 uppercase tracking-wider">
                   {stat.label}
                 </div>
               </div>
@@ -150,12 +150,12 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - hidden on mobile */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
         <ScrollLink href="#about" className="flex flex-col items-center gap-2 text-white/40 hover:text-white/60 transition-colors">
           <span className="text-xs uppercase tracking-widest">Scroll</span>
