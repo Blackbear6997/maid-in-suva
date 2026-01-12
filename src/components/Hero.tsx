@@ -39,13 +39,13 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
-        <div className="max-w-4xl">
+        <div className="max-w-3xl text-left">
           {/* Eyebrow */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex items-center gap-3 mb-8"
+            className="flex items-center justify-start gap-3 mb-8"
           >
             <div className="h-px w-12 bg-gold" />
             <span className="text-gold text-sm tracking-[0.2em] uppercase font-medium">
@@ -83,7 +83,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 mb-16"
+            className="flex flex-col sm:flex-row justify-start gap-4 mb-16"
           >
             <ScrollLink
               href="#contact"
@@ -104,7 +104,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-wrap items-center gap-8 text-white/50"
+            className="flex flex-wrap items-center justify-start gap-8 text-white/50"
           >
             <div className="flex items-center gap-2">
               <div className="flex">
