@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Star, ArrowDown } from "lucide-react";
 import ScrollLink from "./ScrollLink";
@@ -34,12 +35,30 @@ export default function Hero() {
       </div>
 
       {/* Gradient overlays */}
-      <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-earth-deep via-earth-deep/80 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-earth-deep via-earth-deep/80 to-transparent z-[1]" />
       <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-earth-deep/50 to-transparent" />
+
+      {/* Hero image - right side on desktop */}
+      <div className="hidden lg:block absolute top-0 right-0 w-1/2 h-full">
+        <div className="relative w-full h-full">
+          <Image
+            src="/suva-aerial.png"
+            alt="Aerial view of Suva, Fiji"
+            fill
+            className="object-cover"
+            priority
+            sizes="50vw"
+          />
+          {/* Gradient overlay to blend with left side */}
+          <div className="absolute inset-0 bg-gradient-to-r from-earth-deep via-earth-deep/60 to-transparent" />
+          {/* Bottom gradient to blend with stats bar */}
+          <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-earth-deep via-earth-deep/80 to-transparent" />
+        </div>
+      </div>
 
       {/* Content */}
       <div className="relative z-10 w-full px-6 sm:px-12 lg:px-20 xl:px-32 pt-32 pb-20">
-        <div className="max-w-3xl text-left">
+        <div className="max-w-3xl lg:max-w-xl xl:max-w-2xl text-left">
           {/* Eyebrow */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -58,7 +77,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-semibold text-white leading-[0.95] mb-6 sm:mb-8"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-serif font-semibold text-white leading-[0.95] mb-6 sm:mb-8"
           >
             Five-Star
             <br />
@@ -72,7 +91,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-lg sm:text-xl md:text-2xl text-white/70 max-w-2xl mb-8 sm:mb-12 leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl lg:text-lg xl:text-xl text-white/70 max-w-2xl lg:max-w-md xl:max-w-lg mb-8 sm:mb-12 leading-relaxed"
           >
             Fiji&apos;s premier housekeeping service, staffed exclusively by
             professionals from the nation&apos;s most prestigious 5-star resorts.
