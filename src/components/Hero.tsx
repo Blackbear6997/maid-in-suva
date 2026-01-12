@@ -1,231 +1,172 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, Clock, Award, Star } from "lucide-react";
+import { Star, ArrowDown } from "lucide-react";
 import ScrollLink from "./ScrollLink";
-import { MasiGridPattern } from "./MasiPatterns";
-import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 export default function Hero() {
-  const trustBadges = [
-    {
-      icon: Shield,
-      label: "First Aid Trained",
-      color: "terracotta",
-    },
-    {
-      icon: Clock,
-      label: "Reliable Service",
-      color: "primary",
-    },
-    {
-      icon: Award,
-      label: "5-Star Quality",
-      color: "gold",
-    },
-  ];
-
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-cream via-warm-white to-sand/30" />
+      {/* Full-screen background with overlay */}
+      <div className="absolute inset-0 bg-earth-deep" />
 
-      {/* Masi Pattern Overlay */}
-      <MasiGridPattern opacity={0.035} />
+      {/* Decorative masi-inspired geometric elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Large geometric shapes */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] opacity-[0.03]">
+          <svg viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="100" y="100" width="600" height="600" stroke="white" strokeWidth="1"/>
+            <rect x="200" y="200" width="400" height="400" stroke="white" strokeWidth="1"/>
+            <line x1="100" y1="100" x2="700" y2="700" stroke="white" strokeWidth="0.5"/>
+            <line x1="700" y1="100" x2="100" y2="700" stroke="white" strokeWidth="0.5"/>
+            <circle cx="400" cy="400" r="200" stroke="white" strokeWidth="0.5"/>
+          </svg>
+        </div>
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] opacity-[0.03]">
+          <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="300,50 550,250 450,550 150,550 50,250" stroke="white" strokeWidth="1" fill="none"/>
+            <polygon points="300,150 450,280 400,450 200,450 150,280" stroke="white" strokeWidth="0.5" fill="none"/>
+          </svg>
+        </div>
+      </div>
 
-      {/* Decorative Elements */}
-      <div className="absolute top-32 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-32 left-10 w-80 h-80 bg-terracotta/5 rounded-full blur-3xl" />
+      {/* Gradient overlays */}
+      <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-earth-deep via-earth-deep/80 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-earth-deep/50 to-transparent" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Content */}
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+        <div className="max-w-4xl">
+          {/* Eyebrow */}
           <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            className="text-center lg:text-left"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex items-center gap-3 mb-8"
           >
-            {/* Badge */}
-            <motion.div variants={fadeInUp}>
-              <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-5 py-2 rounded-full text-sm font-medium mb-8 border border-primary/20">
-                <Star className="w-4 h-4" />
-                Premium Cleaning Services in Suva
-              </span>
-            </motion.div>
-
-            {/* Heading */}
-            <motion.h1
-              variants={fadeInUp}
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-semibold text-charcoal leading-[1.1] mb-6"
-            >
-              Your Home Deserves the{" "}
-              <span className="text-primary relative">
-                5-Star
-                <svg
-                  className="absolute -bottom-2 left-0 w-full h-3 text-gold/40"
-                  viewBox="0 0 200 12"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M0 9 Q50 0, 100 9 T200 9"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                  />
-                </svg>
-              </span>{" "}
-              Treatment
-            </motion.h1>
-
-            {/* Subheading */}
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg lg:text-xl text-warm-gray mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed"
-            >
-              Experience exceptional cleaning from Fiji&apos;s finest hospitality
-              professionals. Our team brings 5-star resort expertise directly to
-              your home.
-            </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12"
-            >
-              <ScrollLink
-                href="#contact"
-                className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all hover:shadow-xl hover:shadow-primary/25 hover:-translate-y-1 text-center"
-              >
-                Get a Free Quote
-              </ScrollLink>
-              <ScrollLink
-                href="#services"
-                className="border-2 border-charcoal/20 hover:border-primary text-charcoal hover:text-primary px-8 py-4 rounded-lg font-semibold text-lg transition-all text-center"
-              >
-                Our Services
-              </ScrollLink>
-            </motion.div>
-
-            {/* Trust badges */}
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-wrap justify-center lg:justify-start gap-6 lg:gap-8"
-            >
-              {trustBadges.map((badge, index) => (
-                <div key={index} className="flex items-center gap-3">
-                  <div
-                    className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                      badge.color === "terracotta"
-                        ? "bg-terracotta/10"
-                        : badge.color === "primary"
-                        ? "bg-primary/10"
-                        : "bg-gold/10"
-                    }`}
-                  >
-                    <badge.icon
-                      className={`w-5 h-5 ${
-                        badge.color === "terracotta"
-                          ? "text-terracotta"
-                          : badge.color === "primary"
-                          ? "text-primary"
-                          : "text-gold"
-                      }`}
-                    />
-                  </div>
-                  <span className="text-sm font-medium text-charcoal">
-                    {badge.label}
-                  </span>
-                </div>
-              ))}
-            </motion.div>
+            <div className="h-px w-12 bg-gold" />
+            <span className="text-gold text-sm tracking-[0.2em] uppercase font-medium">
+              Premium Cleaning Services
+            </span>
           </motion.div>
 
-          {/* Visual Element */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="relative hidden lg:block"
+          {/* Main headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-semibold text-white leading-[0.95] mb-8"
           >
-            <div className="relative w-full aspect-square max-w-lg mx-auto">
-              {/* Main Card */}
-              <div className="absolute inset-4 bg-warm-white rounded-3xl shadow-2xl shadow-charcoal/10 border border-sand overflow-hidden">
-                {/* Masi pattern accent */}
-                <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-primary via-terracotta to-gold" />
+            Five-Star
+            <br />
+            <span className="text-gold">Excellence</span>
+            <br />
+            <span className="text-white/60">For Your Home</span>
+          </motion.h1>
 
-                <div className="w-full h-full flex items-center justify-center p-8">
-                  <div className="text-center">
-                    {/* Decorative masi-inspired element */}
-                    <div className="w-32 h-32 mx-auto mb-8 relative">
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary to-terracotta rounded-2xl rotate-45 transform" />
-                      <div className="absolute inset-2 bg-cream rounded-xl rotate-45 transform" />
-                      <div className="absolute inset-4 bg-gradient-to-br from-primary to-terracotta rounded-lg rotate-45 transform flex items-center justify-center">
-                        <Star className="w-8 h-8 text-white transform -rotate-45" />
-                      </div>
-                    </div>
-                    <h3 className="text-2xl font-serif font-semibold text-charcoal mb-2">
-                      Maid In Suva
-                    </h3>
-                    <p className="text-warm-gray text-sm">
-                      Excellence in Every Detail
-                    </p>
-                    <div className="mt-6 flex justify-center gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className="w-5 h-5 text-gold fill-gold"
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
+          {/* Subheadline */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="text-xl sm:text-2xl text-white/70 max-w-2xl mb-12 leading-relaxed"
+          >
+            Fiji&apos;s premier housekeeping service, staffed exclusively by
+            professionals from the nation&apos;s most prestigious 5-star resorts.
+          </motion.p>
+
+          {/* CTA buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4 mb-16"
+          >
+            <ScrollLink
+              href="#contact"
+              className="inline-flex items-center justify-center bg-gold hover:bg-gold/90 text-earth-deep px-10 py-5 text-lg font-semibold transition-all hover:shadow-2xl hover:shadow-gold/20"
+            >
+              Request a Quote
+            </ScrollLink>
+            <ScrollLink
+              href="#services"
+              className="inline-flex items-center justify-center border border-white/30 hover:border-white/60 text-white px-10 py-5 text-lg font-medium transition-all hover:bg-white/5"
+            >
+              View Services
+            </ScrollLink>
+          </motion.div>
+
+          {/* Trust indicators */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="flex flex-wrap items-center gap-8 text-white/50"
+          >
+            <div className="flex items-center gap-2">
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 text-gold fill-gold" />
+                ))}
               </div>
-
-              {/* Floating Cards */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-                className="absolute -bottom-4 -left-4 bg-warm-white rounded-2xl shadow-xl border border-sand p-4 flex items-center gap-3"
-              >
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                  <span className="text-2xl">🌿</span>
-                </div>
-                <div>
-                  <p className="font-semibold text-charcoal text-sm">Eco-Friendly</p>
-                  <p className="text-xs text-warm-gray">Green products</p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.5 }}
-                className="absolute -top-4 -right-4 bg-warm-white rounded-2xl shadow-xl border border-sand p-4 flex items-center gap-3"
-              >
-                <div className="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center">
-                  <span className="text-2xl">🏨</span>
-                </div>
-                <div>
-                  <p className="font-semibold text-charcoal text-sm">Resort Quality</p>
-                  <p className="text-xs text-warm-gray">5-star experience</p>
-                </div>
-              </motion.div>
-
-              {/* Corner Decorations */}
-              <div className="absolute top-0 left-0 w-20 h-20 border-l-2 border-t-2 border-primary/20 rounded-tl-3xl" />
-              <div className="absolute bottom-0 right-0 w-20 h-20 border-r-2 border-b-2 border-primary/20 rounded-br-3xl" />
+              <span className="text-sm">Resort Quality</span>
             </div>
+            <div className="h-4 w-px bg-white/20" />
+            <span className="text-sm">26+ Years Experience</span>
+            <div className="h-4 w-px bg-white/20" />
+            <span className="text-sm">100% Fijian Owned</span>
           </motion.div>
         </div>
       </div>
 
-      {/* Bottom fade for section transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
+      {/* Stats bar at bottom */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1 }}
+        className="relative z-10 border-t border-white/10"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+            {[
+              { value: "26+", label: "Years of Excellence" },
+              { value: "5-Star", label: "Resort Trained Staff" },
+              { value: "100%", label: "Satisfaction Rate" },
+              { value: "Eco", label: "Friendly Products" },
+            ].map((stat, index) => (
+              <div key={index} className="py-8 px-6 text-center">
+                <div className="text-2xl sm:text-3xl font-serif font-bold text-gold mb-1">
+                  {stat.value}
+                </div>
+                <div className="text-xs sm:text-sm text-white/50 uppercase tracking-wider">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+      >
+        <ScrollLink href="#about" className="flex flex-col items-center gap-2 text-white/40 hover:text-white/60 transition-colors">
+          <span className="text-xs uppercase tracking-widest">Scroll</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            <ArrowDown className="w-5 h-5" />
+          </motion.div>
+        </ScrollLink>
+      </motion.div>
     </section>
   );
 }
