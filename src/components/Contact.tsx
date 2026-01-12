@@ -1,7 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react";
+import { MasiGridPattern } from "./MasiPatterns";
+import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from "@/lib/animations";
 
 export default function Contact() {
   const [formState, setFormState] = useState({
@@ -15,7 +18,6 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In production, this would send to an API
     console.log("Form submitted:", formState);
     setIsSubmitted(true);
     setTimeout(() => {
@@ -68,47 +70,71 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-16 sm:py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-24 lg:py-32 bg-cream/50 relative overflow-hidden">
+      {/* Background Pattern */}
+      <MasiGridPattern opacity={0.02} />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-          <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-700 px-4 py-2 rounded-full text-sm font-medium mb-4 sm:mb-6">
-            Get In Touch
-          </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-center max-w-3xl mx-auto mb-16 lg:mb-20"
+        >
+          <motion.div variants={fadeInUp}>
+            <span className="inline-flex items-center gap-2 bg-gold/10 text-gold px-5 py-2 rounded-full text-sm font-medium mb-6 border border-gold/20">
+              Get In Touch
+            </span>
+          </motion.div>
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-charcoal mb-6"
+          >
             Ready to Book Your Service?
-          </h2>
-          <p className="text-base sm:text-lg text-gray-600 px-2">
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="text-lg text-warm-gray leading-relaxed">
             Contact us today for a free quote. We guarantee to not only meet,
             but exceed your expectations.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Contact Form */}
-          <div className="lg:col-span-3">
-            <div className="bg-white rounded-2xl shadow-xl p-5 sm:p-8">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-5 sm:mb-6">
+          <motion.div
+            variants={slideInLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="lg:col-span-3"
+          >
+            <div className="bg-warm-white rounded-2xl shadow-xl shadow-charcoal/5 p-6 sm:p-8 lg:p-10 border border-sand">
+              <h3 className="text-xl sm:text-2xl font-serif font-semibold text-charcoal mb-6 lg:mb-8">
                 Request a Free Quote
               </h3>
 
               {isSubmitted ? (
-                <div className="flex flex-col items-center justify-center py-10 sm:py-12 text-center">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-green-100 rounded-full flex items-center justify-center mb-4 sm:mb-6">
-                    <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-green-600" />
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex flex-col items-center justify-center py-12 lg:py-16 text-center"
+                >
+                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                    <CheckCircle className="w-10 h-10 text-primary" />
                   </div>
-                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                  <h4 className="text-xl font-serif font-semibold text-charcoal mb-2">
                     Thank You!
                   </h4>
-                  <p className="text-gray-600 text-sm sm:text-base">
+                  <p className="text-warm-gray">
                     We&apos;ve received your request and will contact you shortly.
                   </p>
-                </div>
+                </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                <form onSubmit={handleSubmit} className="space-y-5 lg:space-y-6">
+                  <div className="grid sm:grid-cols-2 gap-5 lg:gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
+                      <label htmlFor="name" className="block text-sm font-medium text-charcoal mb-2">
                         Full Name *
                       </label>
                       <input
@@ -118,12 +144,12 @@ export default function Contact() {
                         value={formState.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none transition-all text-sm sm:text-base"
+                        className="w-full px-4 py-3.5 bg-cream/50 border border-sand rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all text-charcoal placeholder:text-warm-gray/60"
                         placeholder="Your name"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
+                      <label htmlFor="email" className="block text-sm font-medium text-charcoal mb-2">
                         Email Address *
                       </label>
                       <input
@@ -133,15 +159,15 @@ export default function Contact() {
                         value={formState.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none transition-all text-sm sm:text-base"
+                        className="w-full px-4 py-3.5 bg-cream/50 border border-sand rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all text-charcoal placeholder:text-warm-gray/60"
                         placeholder="your@email.com"
                       />
                     </div>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="grid sm:grid-cols-2 gap-5 lg:gap-6">
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
+                      <label htmlFor="phone" className="block text-sm font-medium text-charcoal mb-2">
                         Phone Number
                       </label>
                       <input
@@ -150,12 +176,12 @@ export default function Contact() {
                         name="phone"
                         value={formState.phone}
                         onChange={handleChange}
-                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none transition-all text-sm sm:text-base"
+                        className="w-full px-4 py-3.5 bg-cream/50 border border-sand rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all text-charcoal placeholder:text-warm-gray/60"
                         placeholder="+679"
                       />
                     </div>
                     <div>
-                      <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
+                      <label htmlFor="service" className="block text-sm font-medium text-charcoal mb-2">
                         Service Needed *
                       </label>
                       <select
@@ -164,7 +190,7 @@ export default function Contact() {
                         value={formState.service}
                         onChange={handleChange}
                         required
-                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none transition-all bg-white text-sm sm:text-base"
+                        className="w-full px-4 py-3.5 bg-cream/50 border border-sand rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all text-charcoal"
                       >
                         <option value="">Select a service</option>
                         {services.map((service) => (
@@ -177,7 +203,7 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
+                    <label htmlFor="message" className="block text-sm font-medium text-charcoal mb-2">
                       Message
                     </label>
                     <textarea
@@ -185,63 +211,83 @@ export default function Contact() {
                       name="message"
                       value={formState.message}
                       onChange={handleChange}
-                      rows={3}
-                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none transition-all resize-none text-sm sm:text-base"
+                      rows={4}
+                      className="w-full px-4 py-3.5 bg-cream/50 border border-sand rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all resize-none text-charcoal placeholder:text-warm-gray/60"
                       placeholder="Tell us about your needs..."
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-amber-500 hover:bg-amber-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all hover:shadow-lg hover:shadow-amber-500/25 flex items-center justify-center gap-2"
+                    className="w-full bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:shadow-lg hover:shadow-primary/25 flex items-center justify-center gap-2"
                   >
-                    <Send className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <Send className="w-5 h-5" />
                     Send Request
                   </button>
                 </form>
               )}
             </div>
-          </div>
+          </motion.div>
 
           {/* Contact Info */}
-          <div className="lg:col-span-2 grid grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-4 lg:gap-6">
+          <motion.div
+            variants={slideInRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="lg:col-span-2 grid grid-cols-2 lg:grid-cols-1 gap-4 lg:gap-5"
+          >
             {contactInfo.map((info, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 border border-gray-100 hover:shadow-lg transition-shadow"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-warm-white rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 border border-sand hover:shadow-lg hover:shadow-charcoal/5 transition-all"
               >
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-amber-100 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
-                    <info.icon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-amber-600" />
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <info.icon className="w-6 h-6 lg:w-7 lg:h-7 text-primary" />
                   </div>
                   <div className="min-w-0">
-                    <h4 className="font-semibold text-gray-900 text-sm sm:text-base mb-0.5 sm:mb-1">
+                    <h4 className="font-semibold text-charcoal text-sm sm:text-base mb-1">
                       {info.title}
                     </h4>
                     {info.href ? (
-                      <a href={info.href} className="text-gray-800 font-medium text-sm sm:text-base hover:text-amber-600 transition-colors break-all">
+                      <a href={info.href} className="text-charcoal font-medium text-sm sm:text-base hover:text-primary transition-colors break-all">
                         {info.content}
                       </a>
                     ) : (
-                      <p className="text-gray-800 font-medium text-sm sm:text-base">{info.content}</p>
+                      <p className="text-charcoal font-medium text-sm sm:text-base">{info.content}</p>
                     )}
-                    <p className="text-xs sm:text-sm text-gray-500 hidden sm:block">{info.subtext}</p>
+                    <p className="text-xs sm:text-sm text-warm-gray hidden sm:block mt-1">{info.subtext}</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
 
             {/* Quick booking note */}
-            <div className="col-span-2 lg:col-span-1 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 text-white">
-              <h4 className="font-bold text-base sm:text-lg mb-1 sm:mb-2">
-                Quick Response Guaranteed
-              </h4>
-              <p className="text-amber-100 text-xs sm:text-sm">
-                We typically respond within 2-4 hours during business hours.
-                For urgent requests, please call us directly.
-              </p>
-            </div>
-          </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              viewport={{ once: true }}
+              className="col-span-2 lg:col-span-1 relative overflow-hidden rounded-xl sm:rounded-2xl"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary to-terracotta" />
+              <MasiGridPattern opacity={0.1} color="#FFFFFF" />
+              <div className="relative p-4 sm:p-5 lg:p-6 text-white">
+                <h4 className="font-serif font-semibold text-lg mb-2">
+                  Quick Response Guaranteed
+                </h4>
+                <p className="text-white/80 text-sm">
+                  We typically respond within 2-4 hours during business hours.
+                  For urgent requests, please call us directly.
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

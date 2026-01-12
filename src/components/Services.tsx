@@ -1,7 +1,10 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Home, Sparkles, Baby, Key, Droplets, Flower2, ArrowRight } from "lucide-react";
 import ScrollLink from "./ScrollLink";
+import { MasiGridPattern } from "./MasiPatterns";
+import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 export default function Services() {
   const services = [
@@ -13,7 +16,6 @@ export default function Services() {
       minimum: "Minimum 3 hours per day",
       description: "Comprehensive routine cleaning to keep your home spotless and fresh.",
       features: ["Dusting & wiping", "Vacuuming & mopping", "Kitchen cleaning", "Bathroom sanitization"],
-      color: "sky",
     },
     {
       icon: Sparkles,
@@ -23,7 +25,6 @@ export default function Services() {
       minimum: "Minimum 3 hours per day",
       description: "Thorough top-to-bottom cleaning for a complete refresh of your space.",
       features: ["Inside appliances", "Detailed scrubbing", "Hard-to-reach areas", "Intensive sanitization"],
-      color: "teal",
     },
     {
       icon: Droplets,
@@ -33,7 +34,6 @@ export default function Services() {
       minimum: "Minimum 3 hours per day",
       description: "Professional floor care for all floor types with specialized techniques.",
       features: ["Tile & grout cleaning", "Hardwood care", "Vinyl & laminate", "Polishing available"],
-      color: "indigo",
     },
     {
       icon: Baby,
@@ -43,7 +43,6 @@ export default function Services() {
       minimum: "Minimum 2 hours per day",
       description: "Trusted childcare from our experienced and First Aid trained staff.",
       features: ["First Aid certified", "Experienced carers", "Flexible hours", "Engaging activities"],
-      color: "pink",
     },
     {
       icon: Key,
@@ -53,7 +52,6 @@ export default function Services() {
       minimum: "Daily rate",
       description: "Keep your home safe and maintained while you travel with peace of mind.",
       features: ["Security presence", "Mail collection", "Plant watering", "Property checks"],
-      color: "amber",
     },
     {
       icon: Flower2,
@@ -63,108 +61,128 @@ export default function Services() {
       minimum: "Delivery available",
       description: "Stunning floral arrangements that brighten any occasion.",
       features: ["Custom arrangements", "Fresh flowers", "All occasions", "Doorstep delivery"],
-      color: "rose",
     },
   ];
 
-  const colorClasses: Record<string, { bg: string; icon: string; hover: string; price: string }> = {
-    sky: { bg: "bg-sky-100", icon: "text-sky-600", hover: "hover:border-sky-300", price: "text-sky-600" },
-    teal: { bg: "bg-teal-100", icon: "text-teal-600", hover: "hover:border-teal-300", price: "text-teal-600" },
-    pink: { bg: "bg-pink-100", icon: "text-pink-600", hover: "hover:border-pink-300", price: "text-pink-600" },
-    amber: { bg: "bg-amber-100", icon: "text-amber-600", hover: "hover:border-amber-300", price: "text-amber-600" },
-    indigo: { bg: "bg-indigo-100", icon: "text-indigo-600", hover: "hover:border-indigo-300", price: "text-indigo-600" },
-    rose: { bg: "bg-rose-100", icon: "text-rose-600", hover: "hover:border-rose-300", price: "text-rose-600" },
-  };
-
   return (
-    <section id="services" className="py-16 sm:py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-24 lg:py-32 bg-cream/50 relative overflow-hidden">
+      {/* Masi Pattern Background */}
+      <MasiGridPattern opacity={0.025} />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-          <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-700 px-4 py-2 rounded-full text-sm font-medium mb-4 sm:mb-6">
-            What We Provide
-          </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-center max-w-3xl mx-auto mb-16 lg:mb-20"
+        >
+          <motion.div variants={fadeInUp}>
+            <span className="inline-flex items-center gap-2 bg-gold/10 text-gold px-5 py-2 rounded-full text-sm font-medium mb-6 border border-gold/20">
+              What We Provide
+            </span>
+          </motion.div>
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-charcoal mb-6"
+          >
             Our Services & Pricing
-          </h2>
-          <p className="text-base sm:text-lg text-gray-600 px-2">
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="text-lg text-warm-gray leading-relaxed">
             Transparent pricing with no hidden fees. All services delivered with 5-star resort quality.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Services grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-          {services.map((service, index) => {
-            const colors = colorClasses[service.color];
-            return (
-              <div
-                key={index}
-                className={`bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 border border-gray-100 ${colors.hover} transition-all hover:shadow-xl group`}
-              >
-                {/* Icon & Price Header */}
-                <div className="flex justify-between items-start mb-4 sm:mb-6">
-                  <div className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 ${colors.bg} rounded-xl sm:rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                    <service.icon className={`w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 ${colors.icon}`} />
-                  </div>
-                  <div className="text-right">
-                    <div className={`text-xl sm:text-2xl font-bold ${colors.price}`}>
-                      {service.price}
-                    </div>
-                    <div className="text-xs sm:text-sm text-gray-500">{service.unit}</div>
-                  </div>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+        >
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              variants={fadeInUp}
+              className="bg-warm-white rounded-2xl p-6 lg:p-8 border border-sand hover:border-primary/30 transition-all hover:shadow-2xl hover:shadow-charcoal/5 group"
+            >
+              {/* Icon & Price Header */}
+              <div className="flex justify-between items-start mb-6">
+                <div className="w-14 h-14 lg:w-16 lg:h-16 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/15 transition-colors">
+                  <service.icon className="w-7 h-7 lg:w-8 lg:h-8 text-primary" />
                 </div>
-
-                {/* Content */}
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
-                  {service.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-amber-600 font-medium mb-2 sm:mb-3">
-                  {service.minimum}
-                </p>
-                <p className="text-gray-600 text-sm sm:text-base mb-4 sm:mb-6 line-clamp-2 sm:line-clamp-none">
-                  {service.description}
-                </p>
-
-                {/* Features - hidden on mobile, shown on larger screens */}
-                <ul className="hidden sm:block space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-gray-600 text-sm">
-                      <div className={`w-1.5 h-1.5 ${colors.bg} rounded-full flex-shrink-0`} />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA */}
-                <ScrollLink
-                  href="#contact"
-                  className={`inline-flex items-center gap-2 ${colors.icon} font-medium text-sm sm:text-base group-hover:gap-3 transition-all`}
-                >
-                  Get in Touch
-                  <ArrowRight className="w-4 h-4" />
-                </ScrollLink>
+                <div className="text-right">
+                  <div className="text-2xl lg:text-3xl font-serif font-bold text-primary">
+                    {service.price}
+                  </div>
+                  <div className="text-sm text-warm-gray">{service.unit}</div>
+                </div>
               </div>
-            );
-          })}
-        </div>
+
+              {/* Content */}
+              <h3 className="text-xl font-serif font-semibold text-charcoal mb-2">
+                {service.title}
+              </h3>
+              <p className="text-sm text-gold font-medium mb-3">
+                {service.minimum}
+              </p>
+              <p className="text-warm-gray mb-6 leading-relaxed">
+                {service.description}
+              </p>
+
+              {/* Features */}
+              <ul className="space-y-2 mb-6">
+                {service.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center gap-3 text-warm-gray text-sm">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTA */}
+              <ScrollLink
+                href="#contact"
+                className="inline-flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all"
+              >
+                Get in Touch
+                <ArrowRight className="w-4 h-4" />
+              </ScrollLink>
+            </motion.div>
+          ))}
+        </motion.div>
 
         {/* CTA Banner */}
-        <div className="mt-10 sm:mt-16 bg-gradient-to-r from-amber-500 to-amber-600 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 text-center text-white">
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4">
-            Ready to Experience the Difference?
-          </h3>
-          <p className="text-amber-100 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base">
-            Give yourself a break today and let us handle the cleaning.
-            Contact us for a free quote!
-          </p>
-          <ScrollLink
-            href="#contact"
-            className="inline-flex items-center gap-2 bg-white text-amber-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-base hover:bg-amber-50 transition-colors"
-          >
-            Get Your Free Quote
-            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-          </ScrollLink>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mt-16 lg:mt-20 relative overflow-hidden rounded-3xl"
+        >
+          {/* Background with masi pattern */}
+          <div className="absolute inset-0 bg-gradient-to-r from-primary via-rust to-terracotta" />
+          <MasiGridPattern opacity={0.1} color="#FFFFFF" />
+
+          <div className="relative p-8 md:p-12 lg:p-16 text-center text-white">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-serif font-semibold mb-4">
+              Ready to Experience the Difference?
+            </h3>
+            <p className="text-white/80 mb-8 max-w-2xl mx-auto text-lg">
+              Give yourself a break today and let us handle the cleaning.
+              Contact us for a free quote!
+            </p>
+            <ScrollLink
+              href="#contact"
+              className="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-cream transition-colors hover:shadow-xl"
+            >
+              Get Your Free Quote
+              <ArrowRight className="w-5 h-5" />
+            </ScrollLink>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
